@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:PickerItems"
+             x:Class="PickerItems.MainPage"
+             xmlns:progress="clr-namespace:CrossPieCharts.FormsPlugin.Abstractions"
+>
+    <StackLayout x:Name="sview">
+        <Picker x:Name="Countries" SelectedIndexChanged="Countries_SelectedIndexChanged" Title="----Select a Country-----" />
+        <Picker x:Name="States1"  IsEnabled="False" Title="----Select a State----" ItemsSource="{Binding state}" ItemDisplayBinding="{Binding State}" />
+        <Button x:Name="LocationGet" Text="Get Location" Clicked="LocationGet_Clicked"/>
+        <Label x:Name="LocationT" FontSize="Large" FontAttributes="Bold" />
+    <Grid>
+        <Label Text="10" FontSize="Large" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+        <progress:CrossPieChartView Progress="10" ProgressColor="Yellow" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" ProgressBackgroundColor="Black" Opacity=".2"/>
+    </Grid>
+        <ListView x:Name="DataList" ItemsSource="{Binding state}" HasUnevenRows="True" ItemSelected="DataList_ItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <StackLayout HorizontalOptions="FillAndExpand" 
+                         VerticalOptions="FillAndExpand" 
+                         Orientation="Vertical" 
+                         Padding="4" Spacing="8">
+                                <Label TextColor="White" Text="{Binding State}"/>
+                                <Label TextColor="Yellow" Text="{Binding Country}"/>
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+       
+        </ListView>
+    </StackLayout>
+    
+    <!--<local:CrossPieChartSample x:Name="progressCon" Progress="0"  WidthRequest="100" HeightRequest="100"/>-->
+    
+</ContentPage>
